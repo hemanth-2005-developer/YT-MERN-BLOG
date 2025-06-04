@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema({
-
     name: {
         type: String,
         required: true,
@@ -13,8 +12,7 @@ const categorySchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
-
 })
 
 const Category = mongoose.model('Category', categorySchema, 'categories')
-export default Category 
+export default Category

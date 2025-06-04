@@ -100,4 +100,3 @@ const CategoryDetails = () => {
 }
 
 export default CategoryDetails
-

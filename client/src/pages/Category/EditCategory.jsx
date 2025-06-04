@@ -48,7 +48,7 @@ const EditCategory = () => {
 
     useEffect(() => {
         if (categoryData) {
-           
+
             form.setValue('name', categoryData.category.name)
             form.setValue('slug', categoryData.category.slug)
         }
@@ -65,7 +65,7 @@ const EditCategory = () => {
             if (!response.ok) {
                 return showToast('error', data.message)
             }
-            
+
             showToast('success', data.message)
         } catch (error) {
             showToast('error', error.message)
