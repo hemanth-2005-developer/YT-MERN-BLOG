@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 import { RouteBlogAdd, RouteBlogEdit } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFetch'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import Loading from '@/components/Loading'
