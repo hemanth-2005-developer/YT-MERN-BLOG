@@ -19,7 +19,7 @@ import PendingBlogs from "./pages/Blog/PendingBlogs";
 import Comments from "./pages/Comments";
 import User from "./pages/User";
 
-import AuthRouteProtection from "./components/AuthRouteProtection";
+import AuthRouteProtection from "./components/AuthRouteProtechtion";
 import OnlyAdminAllowed from "./components/OnlyAdminAllowed";
 
 import {

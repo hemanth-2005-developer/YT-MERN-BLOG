@@ -20,10 +20,10 @@ export const addBlog = async (req, res, next) => {
 
             featuredImage = uploadResult.secure_url
         }
-        
+
         // Check if the user is an admin
         const isAdmin = req.user && req.user.role === 'admin'
-        
+
         const blog = new Blog({
             author: data.author,
             category: data.category,
@@ -138,11 +138,11 @@ export const getBlog = async (req, res, next) => {
     try {
         const { slug } = req.params
         const blog = await Blog.findOne({ slug, isApproved: true }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
-        
+
         if (!blog) {
             return next(handleError(404, 'Blog not found or not approved.'))
         }
-        
+
         res.status(200).json({
             blog
         })
@@ -178,7 +178,7 @@ export const getBlogByCategory = async (req, res, next) => {
             return next(404, 'Category data not found.')
         }
         const categoryId = categoryData._id
-        
+
         // Only show approved blogs for public viewing
         const blog = await Blog.find({ category: categoryId, isApproved: true }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
         res.status(200).json({
@@ -206,9 +206,9 @@ export const approveBlog = async (req, res, next) => {
     try {
         const { blogid } = req.params
         const { isApproved } = req.body
-        
+
         await Blog.findByIdAndUpdate(blogid, { isApproved })
-        
+
         res.status(200).json({
             success: true,
             message: `Blog ${isApproved ? 'approved' : 'rejected'} successfully.`
@@ -222,12 +222,12 @@ export const getAllBlogs = async (req, res, next) => {
     try {
         const user = req.user
         let query = {}
-        
+
         // Non-admin users can only see approved blogs
         if (!user || user.role !== 'admin') {
             query.isApproved = true
         }
-        
+
         const blog = await Blog.find(query).populate('author', 'name avatar role').populate('category', 'name slug').sort({ createdAt: -1 }).lean().exec()
         res.status(200).json({
             blog

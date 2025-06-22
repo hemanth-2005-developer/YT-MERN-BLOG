@@ -5,7 +5,7 @@ import { useFetch } from '@/hooks/useFetch'
 import React from 'react'
 
 const Index = () => {
-    const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/blogs`, {
+    const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/get-all`, {
         method: 'get',
         credentials: 'include'
     })
