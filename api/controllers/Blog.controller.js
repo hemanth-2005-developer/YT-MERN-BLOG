@@ -129,7 +129,12 @@ export const showAllBlog = async (req, res, next) => {
 export const getBlog = async (req, res, next) => {
     try {
         const { slug } = req.params
-        const blog = await Blog.findOne({ slug }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
+        const blog = await Blog.findOne({ slug, isApproved: true }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
+        
+        if (!blog) {
+            return next(handleError(404, 'Blog not found or not approved.'))
+        }
+        
         res.status(200).json({
             blog
         })
@@ -147,7 +152,7 @@ export const getRelatedBlog = async (req, res, next) => {
             return next(404, 'Category data not found.')
         }
         const categoryId = categoryData._id
-        const relatedBlog = await Blog.find({ category: categoryId, slug: { $ne: blog } }).lean().exec()
+        const relatedBlog = await Blog.find({ category: categoryId, slug: { $ne: blog }, isApproved: true }).lean().exec()
         res.status(200).json({
             relatedBlog
         })
@@ -165,7 +170,9 @@ export const getBlogByCategory = async (req, res, next) => {
             return next(404, 'Category data not found.')
         }
         const categoryId = categoryData._id
-        const blog = await Blog.find({ category: categoryId }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
+        
+        // Only show approved blogs for public viewing
+        const blog = await Blog.find({ category: categoryId, isApproved: true }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
         res.status(200).json({
             blog,
             categoryData
@@ -178,9 +185,25 @@ export const search = async (req, res, next) => {
     try {
         const { q } = req.query
 
-        const blog = await Blog.find({ title: { $regex: q, $options: 'i' } }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
+        const blog = await Blog.find({ title: { $regex: q, $options: 'i' }, isApproved: true }).populate('author', 'name avatar role').populate('category', 'name slug').lean().exec()
         res.status(200).json({
             blog,
+        })
+    } catch (error) {
+        next(handleError(500, error.message))
+    }
+}
+
+export const approveBlog = async (req, res, next) => {
+    try {
+        const { blogid } = req.params
+        const { isApproved } = req.body
+        
+        await Blog.findByIdAndUpdate(blogid, { isApproved })
+        
+        res.status(200).json({
+            success: true,
+            message: `Blog ${isApproved ? 'approved' : 'rejected'} successfully.`
         })
     } catch (error) {
         next(handleError(500, error.message))
@@ -190,7 +213,14 @@ export const search = async (req, res, next) => {
 export const getAllBlogs = async (req, res, next) => {
     try {
         const user = req.user
-        const blog = await Blog.find().populate('author', 'name avatar role').populate('category', 'name slug').sort({ createdAt: -1 }).lean().exec()
+        let query = {}
+        
+        // Non-admin users can only see approved blogs
+        if (!user || user.role !== 'admin') {
+            query.isApproved = true
+        }
+        
+        const blog = await Blog.find(query).populate('author', 'name avatar role').populate('category', 'name slug').sort({ createdAt: -1 }).lean().exec()
         res.status(200).json({
             blog
         })

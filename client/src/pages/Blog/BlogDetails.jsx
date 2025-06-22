@@ -16,12 +16,14 @@ import { getEvn } from '@/helpers/getEnv'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import Loading from '@/components/Loading'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FiEdit } from "react-icons/fi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import moment from 'moment'
+import { useSelector } from 'react-redux'
 const BlogDetails = () => {
     const [refreshData, setRefreshData] = useState(false)
+    const user = useSelector((state) => state.user)
     const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/get-all`, {
         method: 'get',
         credentials: 'include'
@@ -36,7 +38,26 @@ const BlogDetails = () => {
             showToast('error', 'Data not deleted.')
         }
     }
- 
+
+    const handleApproval = async (blogId, isApproved) => {
+        try {
+            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/blog/approve/${blogId}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ isApproved })
+            })
+            const data = await response.json()
+            if (!response.ok) {
+                return showToast('error', data.message)
+            }
+            showToast('success', data.message)
+            setRefreshData(!refreshData)
+        } catch (error) {
+            showToast('error', error.message)
+        }
+    }
+
 
     if (loading) return <Loading />
     return (
@@ -60,6 +81,7 @@ const BlogDetails = () => {
                                 <TableHead>Category </TableHead>
                                 <TableHead>Title</TableHead>
                                 <TableHead>Slug</TableHead>
+                                <TableHead>Approval Status</TableHead>
                                 <TableHead>Dated</TableHead>
                                 <TableHead>Action</TableHead>
                             </TableRow>
@@ -73,8 +95,13 @@ const BlogDetails = () => {
                                         <TableCell>{blog?.category?.name}</TableCell>
                                         <TableCell>{blog?.title}</TableCell>
                                         <TableCell>{blog?.slug}</TableCell>
+                                        <TableCell>
+                                            <span className={`px-2 py-1 rounded-full text-xs ${blog?.isApproved ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                                                {blog?.isApproved ? 'Approved' : 'Pending'}
+                                            </span>
+                                        </TableCell>
                                         <TableCell>{moment(blog?.createdAt).format('DD-MM-YYYY')}</TableCell>
-                                     
+
                                         <TableCell className="flex gap-3">
                                             <Button variant="outline" className="hover:bg-violet-500 hover:text-white" asChild>
                                                 <Link to={RouteBlogEdit(blog._id)}>
@@ -84,6 +111,29 @@ const BlogDetails = () => {
                                             <Button onClick={() => handleDelete(blog._id)} variant="outline" className="hover:bg-violet-500 hover:text-white" >
                                                 <FaRegTrashAlt />
                                             </Button>
+                                            {user?.user?.role === 'admin' && (
+                                                <>
+                                                    {!blog?.isApproved && (
+                                                        <Button
+                                                            onClick={() => handleApproval(blog._id, true)}
+                                                            variant='default'
+                                                            size='sm'
+                                                            className='bg-green-600 hover:bg-green-700'
+                                                        >
+                                                            Approve
+                                                        </Button>
+                                                    )}
+                                                    {blog?.isApproved && (
+                                                        <Button
+                                                            onClick={() => handleApproval(blog._id, false)}
+                                                            variant='outline'
+                                                            size='sm'
+                                                        >
+                                                            Reject
+                                                        </Button>
+                                                    )}
+                                                </>
+                                            )}
                                         </TableCell>
                                     </TableRow>
 
