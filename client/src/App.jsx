@@ -1,125 +1,110 @@
-import React from 'react'
-import { Button } from './components/ui/button'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
 import Layout from './Layout/Layout'
-import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser } from './helpers/RouteName'
 import Index from './pages/Index'
-import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
-import AddCategory from './pages/Category/AddCategory'
-import CategoryDetails from './pages/Category/CategoryDetails'
-import EditCategory from './pages/Category/EditCategory'
+import { RouteAddBlog, RouteAddCategory, RouteBlog, RouteBlogByCategory, RouteBlogEdit, RouteCategoryDetails, RouteCategoryEdit, RouteCommentDetails, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteSingleBlogDetails, RouteUser, RouteSearchResult, RoutePendingBlogs } from './helpers/RouteName'
 import AddBlog from './pages/Blog/AddBlog'
 import BlogDetails from './pages/Blog/BlogDetails'
 import EditBlog from './pages/Blog/EditBlog'
 import SingleBlogDetails from './pages/SingleBlogDetails'
-import BlogByCategory from './pages/Blog/BlogByCategory'
-import SearchResult from './pages/SearchResult'
-import Comments from './pages/Comments'
-import User from './pages/User'
-import AuthRouteProtechtion from './components/AuthRouteProtechtion'
-import OnlyAdminAllowed from './components/OnlyAdminAllowed'
-import PendingBlogs from './pages/Blog/PendingBlogs' // Added import for PendingBlogs
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={RouteIndex} element={<Layout />} >
-          <Route index element={<Index />} />
-
-
-          <Route path={RouteBlogDetails()} element={<SingleBlogDetails />} />
-          <Route path={RouteBlogByCategory()} element={<BlogByCategory />} />
-          <Route path={RouteSearch()} element={<SearchResult />} />
-
-
-          <Route element={<AuthRouteProtechtion />}>
-            <Route path={RouteProfile} element={<Profile />} />
-            <Route path={RouteBlogAdd} element={<AddBlog />} />
-            <Route path={RouteBlog} element={<BlogDetails />} />
-            <Route path={RouteBlogEdit()} element={<EditBlog />} />
-            <Route path={RouteCommentDetails} element={<Comments />} />
-          </Route>
-
-
-          <Route element={<OnlyAdminAllowed />}>
-            <Route path={RouteAddCategory} element={<AddCategory />} />
-            <Route path={RouteCategoryDetails} element={<CategoryDetails />} />
-            <Route path={RouteEditCategory()} element={<EditCategory />} />
-            <Route path={RouteUser} element={<User />} />
-          </Route>
-
-        </Route>
-
-        <Route path={RouteSignIn} element={<SignIn />} />
-        <Route path={RouteSignUp} element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
-
-export default App
-```import React from 'react'
-import { Button } from './components/ui/button'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Layout from './Layout/Layout'
-import { RouteAddCategory, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteBlogDetails, RouteBlogEdit, RouteCategoryDetails, RouteCommentDetails, RouteEditCategory, RouteIndex, RouteProfile, RouteSearch, RouteSignIn, RouteSignUp, RouteUser } from './helpers/RouteName'
-import Index from './pages/Index'
-import SignUp from './pages/SignUp'
-import SignIn from './pages/SignIn'
-import Profile from './pages/Profile'
 import AddCategory from './pages/Category/AddCategory'
 import CategoryDetails from './pages/Category/CategoryDetails'
 import EditCategory from './pages/Category/EditCategory'
-import AddBlog from './pages/Blog/AddBlog'
-import BlogDetails from './pages/Blog/BlogDetails'
-import EditBlog from './pages/Blog/EditBlog'
-import SingleBlogDetails from './pages/SingleBlogDetails'
 import BlogByCategory from './pages/Blog/BlogByCategory'
-import SearchResult from './pages/SearchResult'
-import Comments from './pages/Comments'
-import User from './pages/User'
 import AuthRouteProtechtion from './components/AuthRouteProtechtion'
 import OnlyAdminAllowed from './components/OnlyAdminAllowed'
-import PendingBlogs from './pages/Blog/PendingBlogs' // Added import for PendingBlogs
+import User from './pages/User'
+import Comments from './pages/Comments'
+import SearchResult from './pages/SearchResult'
+import PendingBlogs from './pages/Blog/PendingBlogs'
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path={RouteIndex} element={<Layout />} >
-          <Route index element={<Index />} />
+      <Layout>
+        <Routes>
+          <Route path={RouteIndex} element={<Index />} />
+          <Route path={RouteSignIn} element={<SignIn />} />
+          <Route path={RouteSignUp} element={<SignUp />} />
+          <Route path={RouteSearchResult} element={<SearchResult />} />
+          <Route path={RouteSingleBlogDetails(':slug')} element={<SingleBlogDetails />} />
+          <Route path={RouteBlogByCategory(':category')} element={<BlogByCategory />} />
 
+          <Route path={RouteProfile} element={
+            <AuthRouteProtechtion>
+              <Profile />
+            </AuthRouteProtechtion>
+          } />
 
-          <Route path={RouteBlogDetails()} element={<SingleBlogDetails />} />
-          <Route path={RouteBlogByCategory()} element={<BlogByCategory />} />
-          <Route path={RouteSearch()} element={<SearchResult />} />
+          <Route path={RouteAddBlog} element={
+            <AuthRouteProtechtion>
+              <AddBlog />
+            </AuthRouteProtechtion>
+          } />
 
+          <Route path={RouteBlog} element={
+            <AuthRouteProtechtion>
+              <BlogDetails />
+            </AuthRouteProtechtion>
+          } />
 
-          <Route element={<AuthRouteProtechtion />}>
-            <Route path={RouteProfile} element={<Profile />} />
-            <Route path={RouteBlogAdd} element={<AddBlog />} />
-            <Route path={RouteBlog} element={<BlogDetails />} />
-            <Route path={RouteBlogEdit()} element={<EditBlog />} />
-            <Route path={RouteCommentDetails} element={<Comments />} />
-          </Route>
+          <Route path={RouteBlogEdit(':id')} element={
+            <AuthRouteProtechtion>
+              <EditBlog />
+            </AuthRouteProtechtion>
+          } />
 
+          <Route path={RouteAddCategory} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <AddCategory />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
 
-          <Route element={<OnlyAdminAllowed />}>
-            <Route path={RouteAddCategory} element={<AddCategory />} />
-            <Route path={RouteCategoryDetails} element={<CategoryDetails />} />
-            <Route path={RouteEditCategory()} element={<EditCategory />} />
-            <Route path={RouteUser} element={<User />} />
-            <Route path='/pending-blogs' element={<OnlyAdminAllowed><PendingBlogs /></OnlyAdminAllowed>} />
-          </Route>
+          <Route path={RouteCategoryDetails} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <CategoryDetails />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
 
-        </Route>
+          <Route path={RouteCategoryEdit(':id')} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <EditCategory />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
 
-        <Route path={RouteSignIn} element={<SignIn />} />
-        <Route path={RouteSignUp} element={<SignUp />} />
-      </Routes>
+          <Route path={RouteUser} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <User />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
+
+          <Route path={RouteCommentDetails} element={
+            <AuthRouteProtechtion>
+              <Comments />
+            </AuthRouteProtechtion>
+          } />
+
+          <Route path={RoutePendingBlogs} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <PendingBlogs />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
+
+        </Routes>
+      </Layout>
     </BrowserRouter>
   )
 }
