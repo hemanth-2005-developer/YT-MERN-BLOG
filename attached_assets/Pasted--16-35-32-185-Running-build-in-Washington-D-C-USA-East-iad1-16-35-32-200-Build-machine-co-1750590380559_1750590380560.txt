@@ -1,0 +1,45 @@
+[16:35:32.185] Running build in Washington, D.C., USA (East) – iad1
+[16:35:32.200] Build machine configuration: 2 cores, 8 GB
+[16:35:32.229] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: 378b259)
+[16:35:32.564] Cloning completed: 335.000ms
+[16:35:33.402] Restored build cache from previous deployment (464z95EfTgm2y1MsqcnTe5wkLMjz)
+[16:35:34.126] Running "vercel build"
+[16:35:34.541] Vercel CLI 43.3.0
+[16:35:35.092] Installing dependencies...
+[16:35:36.472] 
+[16:35:36.473] up to date in 1s
+[16:35:36.474] 
+[16:35:36.474] 139 packages are looking for funding
+[16:35:36.474]   run `npm fund` for details
+[16:35:36.526] Running "npm run build"
+[16:35:36.635] 
+[16:35:36.635] > client@0.0.0 build
+[16:35:36.635] > vite build
+[16:35:36.635] 
+[16:35:36.945] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[16:35:37.322] transforming...
+[16:35:44.613] [32m✓[39m 2529 modules transformed.
+[16:35:44.616] [31m✗[39m Build failed in 7.64s
+[16:35:44.616] [31merror during build:
+[16:35:44.616] [31msrc/helpers/firebase.js (2:9): "getEvn" is not exported by "src/helpers/getEnv.js", imported by "src/helpers/firebase.js".[31m
+[16:35:44.616] file: [36m/vercel/path0/client/src/helpers/firebase.js:2:9[31m
+[16:35:44.617] [33m
+[16:35:44.617] 1: import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+[16:35:44.617] 2: import { getEvn } from "./getEnv";
+[16:35:44.617]             ^
+[16:35:44.617] 3: import { initializeApp } from "firebase/app";
+[16:35:44.617] 4: // TODO: Add SDKs for Firebase products that you want to use
+[16:35:44.617] [31m
+[16:35:44.618]     at getRollupError (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:400:41)
+[16:35:44.618]     at error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:396:42)
+[16:35:44.618]     at Module.error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:16788:16)
+[16:35:44.618]     at Module.traceVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:17237:29)
+[16:35:44.618]     at ModuleScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:14893:39)
+[16:35:44.618]     at Identifier.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5391:40)
+[16:35:44.618]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:2786:23)
+[16:35:44.619]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:11978:15)
+[16:35:44.619]     at Property.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:2786:23)
+[16:35:44.619]     at ObjectExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:2782:28)[39m
+[16:35:44.723] Error: Command "npm run build" exited with 1
+[16:35:45.219] 
+[16:35:49.135] Exiting build container
