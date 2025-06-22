@@ -1,0 +1,46 @@
+[15:41:17.262] Running build in Washington, D.C., USA (East) – iad1
+[15:41:17.263] Build machine configuration: 2 cores, 8 GB
+[15:41:17.278] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: f919e2f)
+[15:41:17.619] Cloning completed: 341.000ms
+[15:41:18.496] Restored build cache from previous deployment (4SWeQMmmLhQ4QAeLAdMLKkDAMTLV)
+[15:41:19.202] Running "vercel build"
+[15:41:19.628] Vercel CLI 43.3.0
+[15:41:20.155] Installing dependencies...
+[15:41:21.688] 
+[15:41:21.690] up to date in 1s
+[15:41:21.696] 
+[15:41:21.696] 139 packages are looking for funding
+[15:41:21.696]   run `npm fund` for details
+[15:41:21.724] Running "npm run build"
+[15:41:21.833] 
+[15:41:21.834] > client@0.0.0 build
+[15:41:21.835] > vite build
+[15:41:21.835] 
+[15:41:22.126] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[15:41:22.521] transforming...
+[15:41:22.566] [32m✓[39m 5 modules transformed.
+[15:41:22.569] [31m✗[39m Build failed in 81ms
+[15:41:22.570] [31merror during build:
+[15:41:22.570] [31m[vite:esbuild] Transform failed with 1 error:
+[15:41:22.570] /vercel/path0/client/src/App.jsx:127:18: ERROR: Unterminated string literal[31m
+[15:41:22.570] file: [36m/vercel/path0/client/src/App.jsx:127:18[31m
+[15:41:22.570] [33m
+[15:41:22.570] [33mUnterminated string literal[33m
+[15:41:22.570] 125|  }
+[15:41:22.570] 126|  
+[15:41:22.570] 127|  export default App
+[15:41:22.570]    |                    ^
+[15:41:22.570] [31m
+[15:41:22.570]     at failureErrorWithLog (/vercel/path0/client/node_modules/esbuild/lib/main.js:1463:15)
+[15:41:22.571]     at /vercel/path0/client/node_modules/esbuild/lib/main.js:734:50
+[15:41:22.571]     at responseCallbacks.<computed> (/vercel/path0/client/node_modules/esbuild/lib/main.js:601:9)
+[15:41:22.571]     at handleIncomingPacket (/vercel/path0/client/node_modules/esbuild/lib/main.js:656:12)
+[15:41:22.571]     at Socket.readFromStdout (/vercel/path0/client/node_modules/esbuild/lib/main.js:579:7)
+[15:41:22.571]     at Socket.emit (node:events:518:28)
+[15:41:22.571]     at addChunk (node:internal/streams/readable:561:12)
+[15:41:22.571]     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+[15:41:22.571]     at Readable.push (node:internal/streams/readable:392:5)
+[15:41:22.571]     at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m
+[15:41:22.608] Error: Command "npm run build" exited with 1
+[15:41:23.462] 
+[15:41:26.439] Exiting build container
