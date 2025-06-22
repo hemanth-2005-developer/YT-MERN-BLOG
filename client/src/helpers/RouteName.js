@@ -9,6 +9,7 @@ export const RouteAddCategory = '/category/add'
 export const RouteCategoryEdit = (category_id) => {
   return category_id ? `/category/edit/${category_id}` : '/category/edit/:category_id'
 }
+export const RouteEditCategory = RouteCategoryEdit
 
 // Blog Routes
 export const RouteBlog = '/blog'
