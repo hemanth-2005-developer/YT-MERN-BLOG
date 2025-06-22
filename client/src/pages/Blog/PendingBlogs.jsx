@@ -21,14 +21,14 @@ const PendingBlogs = () => {
     const [refreshData, setRefreshData] = useState(false)
     const user = useSelector((state) => state.user)
     
-    const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/pending-blogs`, {
+    const { data: blogData, loading, error } = useFetch(`${getEnv('VITE_API_BASE_URL')}/blog/pending-blogs`, {
         method: 'get',
         credentials: 'include'
     }, [refreshData])
 
     const handleApproval = async (blogId, isApproved) => {
         try {
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/blog/approve/${blogId}`, {
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/blog/approve/${blogId}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

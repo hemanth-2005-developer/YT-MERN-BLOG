@@ -28,7 +28,7 @@ import { FaComments } from "react-icons/fa";
 const AppSidebar = () => {
     const user = useSelector(state => state.user)
     const { setOpenMobile } = useSidebar()
-    const { data: categoryData } = useFetch(`${getEvn('VITE_API_BASE_URL')}/category/all-category`, {
+    const { data: categoryData } = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/all-category`, {
         method: 'get',
         credentials: 'include'
     })
