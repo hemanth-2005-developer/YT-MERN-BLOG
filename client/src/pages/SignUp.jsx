@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import { Card } from '@/components/ui/card'
 import { RouteSignIn } from '@/helpers/RouteName'
 import { Link, useNavigate } from 'react-router-dom'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { showToast } from '@/helpers/showToast'
 import GoogleLogin from '@/components/GoogleLogin'
 
