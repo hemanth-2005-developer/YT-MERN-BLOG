@@ -1,4 +1,4 @@
-import { getEvn } from '@/helpers/getEnv';
+import { getEnv } from '@/helpers/getEnv';
 import { showToast } from '@/helpers/showToast';
 import { useFetch } from '@/hooks/useFetch';
 import React, { useEffect, useState } from 'react'
