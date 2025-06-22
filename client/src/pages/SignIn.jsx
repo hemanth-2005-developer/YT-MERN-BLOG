@@ -35,7 +35,7 @@ const SignIn = () => {
     async function onSubmit(values) {
         console.log("Submitting form with values:", values); // Log form values
         try {
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/auth/login`, {
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/auth/login`, {
                 method: 'post',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include',
