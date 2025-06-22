@@ -1,0 +1,75 @@
+[16:25:53.761] Running build in Washington, D.C., USA (East) – iad1
+[16:25:53.762] Build machine configuration: 2 cores, 8 GB
+[16:25:53.778] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: 3b76ad1)
+[16:25:54.142] Cloning completed: 364.000ms
+[16:25:54.989] Restored build cache from previous deployment (464z95EfTgm2y1MsqcnTe5wkLMjz)
+[16:25:55.700] Running "vercel build"
+[16:25:56.169] Vercel CLI 43.3.0
+[16:25:56.716] Installing dependencies...
+[16:25:58.080] 
+[16:25:58.081] up to date in 1s
+[16:25:58.081] 
+[16:25:58.082] 139 packages are looking for funding
+[16:25:58.082]   run `npm fund` for details
+[16:25:58.112] Running "npm run build"
+[16:25:58.218] 
+[16:25:58.218] > client@0.0.0 build
+[16:25:58.219] > vite build
+[16:25:58.219] 
+[16:25:58.533] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[16:25:58.899] transforming...
+[16:26:01.446] [32m✓[39m 126 modules transformed.
+[16:26:01.452] [31m✗[39m Build failed in 2.59s
+[16:26:01.463] [31merror during build:
+[16:26:01.463] [31m[vite:esbuild] Transform failed with 4 errors:
+[16:26:01.464] /vercel/path0/client/src/components/ui/sheet.jsx:92:6: ERROR: The symbol "SheetContent" has already been declared
+[16:26:01.464] /vercel/path0/client/src/components/ui/sheet.jsx:107:6: ERROR: The symbol "SheetHeader" has already been declared
+[16:26:01.464] /vercel/path0/client/src/components/ui/sheet.jsx:117:6: ERROR: The symbol "SheetFooter" has already been declared
+[16:26:01.464] /vercel/path0/client/src/components/ui/sheet.jsx:127:6: ERROR: The symbol "SheetTitle" has already been declared[31m
+[16:26:01.464] file: [36m/vercel/path0/client/src/components/ui/sheet.jsx:92:6[31m
+[16:26:01.464] [33m
+[16:26:01.465] [33mThe symbol "SheetContent" has already been declared[33m
+[16:26:01.465] 90 |  )
+[16:26:01.465] 91 |  
+[16:26:01.465] 92 |  const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => (
+[16:26:01.465]    |        ^
+[16:26:01.466] 93 |    <SheetPortal>
+[16:26:01.466] 94 |      <SheetOverlay />
+[16:26:01.466] 
+[16:26:01.466] [33mThe symbol "SheetHeader" has already been declared[33m
+[16:26:01.466] 105|  SheetContent.displayName = SheetPrimitive.Content.displayName
+[16:26:01.466] 106|  
+[16:26:01.466] 107|  const SheetHeader = ({
+[16:26:01.467]    |        ^
+[16:26:01.467] 108|    className,
+[16:26:01.467] 109|    ...props
+[16:26:01.467] 
+[16:26:01.467] [33mThe symbol "SheetFooter" has already been declared[33m
+[16:26:01.467] 115|  SheetHeader.displayName = "SheetHeader"
+[16:26:01.467] 116|  
+[16:26:01.468] 117|  const SheetFooter = ({
+[16:26:01.468]    |        ^
+[16:26:01.468] 118|    className,
+[16:26:01.468] 119|    ...props
+[16:26:01.468] 
+[16:26:01.468] [33mThe symbol "SheetTitle" has already been declared[33m
+[16:26:01.469] 125|  SheetFooter.displayName = "SheetFooter"
+[16:26:01.469] 126|  
+[16:26:01.469] 127|  const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
+[16:26:01.469]    |        ^
+[16:26:01.469] 128|    <SheetPrimitive.Title
+[16:26:01.469] 129|      ref={ref}
+[16:26:01.470] [31m
+[16:26:01.470]     at failureErrorWithLog (/vercel/path0/client/node_modules/esbuild/lib/main.js:1463:15)
+[16:26:01.470]     at /vercel/path0/client/node_modules/esbuild/lib/main.js:734:50
+[16:26:01.470]     at responseCallbacks.<computed> (/vercel/path0/client/node_modules/esbuild/lib/main.js:601:9)
+[16:26:01.470]     at handleIncomingPacket (/vercel/path0/client/node_modules/esbuild/lib/main.js:656:12)
+[16:26:01.470]     at Socket.readFromStdout (/vercel/path0/client/node_modules/esbuild/lib/main.js:579:7)
+[16:26:01.470]     at Socket.emit (node:events:518:28)
+[16:26:01.471]     at addChunk (node:internal/streams/readable:561:12)
+[16:26:01.471]     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+[16:26:01.471]     at Readable.push (node:internal/streams/readable:392:5)
+[16:26:01.471]     at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m
+[16:26:01.529] Error: Command "npm run build" exited with 1
+[16:26:01.878] 
+[16:26:04.730] Exiting build container
