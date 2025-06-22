@@ -1,0 +1,46 @@
+[15:50:19.590] Running build in Washington, D.C., USA (East) – iad1
+[15:50:19.591] Build machine configuration: 2 cores, 8 GB
+[15:50:19.610] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: e209091)
+[15:50:20.021] Cloning completed: 410.000ms
+[15:50:20.865] Restored build cache from previous deployment (8pyin3rHnMxiHT8HjAjWy9VUUKaX)
+[15:50:21.696] Running "vercel build"
+[15:50:22.537] Vercel CLI 43.3.0
+[15:50:23.081] Installing dependencies...
+[15:50:24.681] 
+[15:50:24.682] up to date in 1s
+[15:50:24.682] 
+[15:50:24.682] 139 packages are looking for funding
+[15:50:24.682]   run `npm fund` for details
+[15:50:24.718] Running "npm run build"
+[15:50:24.858] 
+[15:50:24.858] > client@0.0.0 build
+[15:50:24.859] > vite build
+[15:50:24.859] 
+[15:50:25.203] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[15:50:25.617] transforming...
+[15:50:33.404] [32m✓[39m 2529 modules transformed.
+[15:50:33.407] [31m✗[39m Build failed in 7.83s
+[15:50:33.407] [31merror during build:
+[15:50:33.408] [31msrc/App.jsx (33:2): "RouteCategoryEdit" is not exported by "src/helpers/RouteName.js", imported by "src/App.jsx".[31m
+[15:50:33.408] file: [36m/vercel/path0/client/src/App.jsx:33:2[31m
+[15:50:33.408] [33m
+[15:50:33.408] 31:   RouteAddCategory,
+[15:50:33.408] 32:   RouteCategoryDetails,
+[15:50:33.409] 33:   RouteCategoryEdit,
+[15:50:33.409]       ^
+[15:50:33.409] 34:   RouteSearch,
+[15:50:33.409] 35:   RouteBlogDetails,
+[15:50:33.410] [31m
+[15:50:33.410]     at getRollupError (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:400:41)
+[15:50:33.410]     at error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:396:42)
+[15:50:33.410]     at Module.error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:16788:16)
+[15:50:33.410]     at Module.traceVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:17237:29)
+[15:50:33.411]     at ModuleScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:14893:39)
+[15:50:33.411]     at FunctionScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5617:38)
+[15:50:33.411]     at FunctionBodyScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5617:38)
+[15:50:33.411]     at Identifier.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5391:40)
+[15:50:33.411]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:2786:23)
+[15:50:33.412]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:11978:15)[39m
+[15:50:33.482] Error: Command "npm run build" exited with 1
+[15:50:33.820] 
+[15:50:36.760] Exiting build container
