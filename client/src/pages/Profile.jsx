@@ -67,7 +67,7 @@ const Profile = () => {
             formData.append('file', file)
             formData.append('data', JSON.stringify(values))
 
-            const response = await fetch(`${getEvn('VITE_API_BASE_URL')}/user/update-user/${userData.user._id}`, {
+            const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/user/update-user/${userData.user._id}`, {
                 method: 'put',
                 credentials: 'include',
                 body: formData
