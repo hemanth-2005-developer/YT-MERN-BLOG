@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { showToast } from '@/helpers/showToast';
-import { getEvn } from '@/helpers/getEnv';
+import { getEnv } from '@/helpers/getEnv';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { useSelector } from 'react-redux';
