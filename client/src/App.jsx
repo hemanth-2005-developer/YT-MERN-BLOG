@@ -25,17 +25,17 @@ import {
   RouteSignIn,
   RouteSignUp,
   RouteProfile,
-  RouteAddBlog,
+  RouteBlogAdd,
   RouteBlog,
   RouteBlogEdit,
   RouteAddCategory,
   RouteCategoryDetails,
   RouteCategoryEdit,
-  RouteSearchResult,
-  RouteSingleBlogDetails,
+  RouteSearch,
+  RouteBlogDetails,
   RouteBlogByCategory,
   RoutePendingBlogs,
-  RouteComments,
+  RouteCommentDetails,
   RouteUser
 } from './helpers/RouteName'
 
@@ -47,9 +47,9 @@ function App() {
           <Route path={RouteIndex} element={<Index />} />
           <Route path={RouteSignIn} element={<SignIn />} />
           <Route path={RouteSignUp} element={<SignUp />} />
-          <Route path={RouteSearchResult} element={<SearchResult />} />
-          <Route path={RouteSingleBlogDetails(':slug')} element={<SingleBlogDetails />} />
-          <Route path={RouteBlogByCategory(':category')} element={<BlogByCategory />} />
+          <Route path={RouteSearch()} element={<SearchResult />} />
+          <Route path={RouteBlogDetails()} element={<SingleBlogDetails />} />
+          <Route path={RouteBlogByCategory()} element={<BlogByCategory />} />
 
           <Route path={RouteProfile} element={
             <AuthRouteProtechtion>
@@ -57,7 +57,7 @@ function App() {
             </AuthRouteProtechtion>
           } />
 
-          <Route path={RouteAddBlog} element={
+          <Route path={RouteBlogAdd} element={
             <AuthRouteProtechtion>
               <AddBlog />
             </AuthRouteProtechtion>
@@ -107,7 +107,7 @@ function App() {
             </AuthRouteProtechtion>
           } />
 
-          <Route path={RouteComments} element={
+          <Route path={RouteCommentDetails} element={
             <AuthRouteProtechtion>
               <OnlyAdminAllowed>
                 <Comments />
