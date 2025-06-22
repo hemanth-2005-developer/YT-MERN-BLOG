@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import slugify from 'slugify'
 import { showToast } from '@/helpers/showToast'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '@/hooks/useFetch'
 
