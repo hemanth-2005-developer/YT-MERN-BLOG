@@ -7,6 +7,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar,
 } from "@/components/ui/sidebar"
 import { Link } from "react-router-dom"
 import logo from '@/assets/images/logo-white.png'
@@ -23,10 +24,15 @@ import { useSelector } from "react-redux";
 
 const AppSidebar = () => {
     const user = useSelector(state => state.user)
+    const { setOpenMobile } = useSidebar()
     const { data: categoryData } = useFetch(`${getEvn('VITE_API_BASE_URL')}/category/all-category`, {
         method: 'get',
         credentials: 'include'
     })
+
+    const handleCategoryClick = () => {
+        setOpenMobile(false)
+    }
 
     return (
         <Sidebar>
@@ -93,7 +99,7 @@ const AppSidebar = () => {
                             && categoryData.category.map(category => <SidebarMenuItem key={category._id}>
                                 <SidebarMenuButton>
                                     <GoDot />
-                                    <Link to={RouteBlogByCategory(category.slug)}>{category.name}</Link>
+                                    <Link to={RouteBlogByCategory(category.slug)} onClick={handleCategoryClick}>{category.name}</Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>)
                         }
