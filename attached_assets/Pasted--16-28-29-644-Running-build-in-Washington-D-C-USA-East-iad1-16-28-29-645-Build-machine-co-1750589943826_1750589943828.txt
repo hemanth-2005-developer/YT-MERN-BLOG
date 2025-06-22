@@ -1,0 +1,48 @@
+[16:28:29.644] Running build in Washington, D.C., USA (East) – iad1
+[16:28:29.645] Build machine configuration: 2 cores, 8 GB
+[16:28:29.664] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: 059d8e9)
+[16:28:30.023] Cloning completed: 359.000ms
+[16:28:30.879] Restored build cache from previous deployment (464z95EfTgm2y1MsqcnTe5wkLMjz)
+[16:28:31.625] Running "vercel build"
+[16:28:32.090] Vercel CLI 43.3.0
+[16:28:34.457] Installing dependencies...
+[16:28:35.993] 
+[16:28:35.994] up to date in 1s
+[16:28:35.994] 
+[16:28:35.994] 139 packages are looking for funding
+[16:28:35.995]   run `npm fund` for details
+[16:28:36.028] Running "npm run build"
+[16:28:36.169] 
+[16:28:36.170] > client@0.0.0 build
+[16:28:36.170] > vite build
+[16:28:36.171] 
+[16:28:37.483] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[16:28:37.915] transforming...
+[16:28:41.906] [32m✓[39m 155 modules transformed.
+[16:28:41.908] [31m✗[39m Build failed in 4.39s
+[16:28:41.908] [31merror during build:
+[16:28:41.908] [31m[vite:esbuild] Transform failed with 1 error:
+[16:28:41.908] /vercel/path0/client/src/components/ui/sheet.jsx:3:12: ERROR: The symbol "React" has already been declared[31m
+[16:28:41.908] file: [36m/vercel/path0/client/src/components/ui/sheet.jsx:3:12[31m
+[16:28:41.908] [33m
+[16:28:41.908] [33mThe symbol "React" has already been declared[33m
+[16:28:41.909] 1  |  "use client";
+[16:28:41.909] 2  |  import * as React from "react"
+[16:28:41.909] 3  |  import * as React from "react"
+[16:28:41.909]    |              ^
+[16:28:41.909] 4  |  import * as SheetPrimitive from "@radix-ui/react-dialog"
+[16:28:41.909] 5  |  import { cva } from "class-variance-authority"
+[16:28:41.910] [31m
+[16:28:41.910]     at failureErrorWithLog (/vercel/path0/client/node_modules/esbuild/lib/main.js:1463:15)
+[16:28:41.910]     at /vercel/path0/client/node_modules/esbuild/lib/main.js:734:50
+[16:28:41.910]     at responseCallbacks.<computed> (/vercel/path0/client/node_modules/esbuild/lib/main.js:601:9)
+[16:28:41.910]     at handleIncomingPacket (/vercel/path0/client/node_modules/esbuild/lib/main.js:656:12)
+[16:28:41.910]     at Socket.readFromStdout (/vercel/path0/client/node_modules/esbuild/lib/main.js:579:7)
+[16:28:41.911]     at Socket.emit (node:events:518:28)
+[16:28:41.911]     at addChunk (node:internal/streams/readable:561:12)
+[16:28:41.911]     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+[16:28:41.911]     at Readable.push (node:internal/streams/readable:392:5)
+[16:28:41.911]     at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m
+[16:28:41.971] Error: Command "npm run build" exited with 1
+[16:28:42.348] 
+[16:28:45.238] Exiting build container
