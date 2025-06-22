@@ -1,9 +1,9 @@
-import {  RouteSignIn } from '@/helpers/RouteName'
+import { RouteSignIn } from '@/helpers/RouteName'
 
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 
-const AuthRouteProtechtion = () => {
+const AuthRouteProtection = () => {
     const user = useSelector(state => state.user)
     if (user && user.isLoggedIn) {
         return (
@@ -15,4 +15,4 @@ const AuthRouteProtechtion = () => {
 
 }
 
-export default AuthRouteProtechtion
+export default AuthRouteProtection

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { RouteAddCategory, RouteEditCategory } from '@/helpers/RouteName'
+import { RouteAddCategory, RouteCategoryEdit } from '@/helpers/RouteName'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -70,7 +70,7 @@ const CategoryDetails = () => {
                                         <TableCell>{category.slug}</TableCell>
                                         <TableCell className="flex gap-3">
                                             <Button variant="outline" className="hover:bg-violet-500 hover:text-white" asChild>
-                                                <Link to={RouteEditCategory(category._id)}>
+                                                <Link to={RouteCategoryEdit(category._id)}>
                                                     <FiEdit />
                                                 </Link>
                                             </Button>
