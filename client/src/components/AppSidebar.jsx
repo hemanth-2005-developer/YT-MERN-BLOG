@@ -19,7 +19,7 @@ import { LuUsers } from "react-icons/lu";
 import { GoDot } from "react-icons/go";
 import { RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentDetails, RouteIndex, RouteUser, RoutePendingBlogs } from "@/helpers/RouteName";
 import { useFetch } from "@/hooks/useFetch";
-import { getEvn } from "@/helpers/getEnv";
+import { getEnv } from "@/helpers/getEnv";
 import { useSelector } from "react-redux";
 import { MdOutlineMenuBook, MdOutlinePendingActions } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
