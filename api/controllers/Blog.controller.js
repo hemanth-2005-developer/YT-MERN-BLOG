@@ -21,6 +21,9 @@ export const addBlog = async (req, res, next) => {
             featuredImage = uploadResult.secure_url
         }
         
+        // Check if the user is an admin
+        const isAdmin = req.user && req.user.role === 'admin'
+        
         const blog = new Blog({
             author: data.author,
             category: data.category,
@@ -28,13 +31,18 @@ export const addBlog = async (req, res, next) => {
             slug: `${data.slug}-${Math.round(Math.random() * 100000)}`,
             featuredImage: featuredImage,
             blogContent: encode(data.blogContent),
+            isApproved: isAdmin // Auto-approve if admin creates the blog
         })
 
         await blog.save()
 
+        const message = isAdmin 
+            ? 'Blog added and published successfully.' 
+            : 'Blog submitted successfully! It is now pending admin approval.'
+
         res.status(200).json({
             success: true,
-            message: 'Blog added successfully.'
+            message: message
         })
 
     } catch (error) {

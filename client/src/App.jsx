@@ -1,25 +1,43 @@
+
+import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
 import Layout from './Layout/Layout'
 import Index from './pages/Index'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
-import { RouteAddBlog, RouteAddCategory, RouteBlog, RouteBlogByCategory, RouteBlogEdit, RouteCategoryDetails, RouteCategoryEdit, RouteCommentDetails, RouteIndex, RouteProfile, RouteSignIn, RouteSignUp, RouteSingleBlogDetails, RouteUser, RouteSearchResult, RoutePendingBlogs } from './helpers/RouteName'
 import AddBlog from './pages/Blog/AddBlog'
 import BlogDetails from './pages/Blog/BlogDetails'
 import EditBlog from './pages/Blog/EditBlog'
-import SingleBlogDetails from './pages/SingleBlogDetails'
 import AddCategory from './pages/Category/AddCategory'
 import CategoryDetails from './pages/Category/CategoryDetails'
 import EditCategory from './pages/Category/EditCategory'
+import SearchResult from './pages/SearchResult'
+import SingleBlogDetails from './pages/SingleBlogDetails'
 import BlogByCategory from './pages/Blog/BlogByCategory'
+import PendingBlogs from './pages/Blog/PendingBlogs'
+import Comments from './pages/Comments'
+import User from './pages/User'
 import AuthRouteProtechtion from './components/AuthRouteProtechtion'
 import OnlyAdminAllowed from './components/OnlyAdminAllowed'
-import User from './pages/User'
-import Comments from './pages/Comments'
-import SearchResult from './pages/SearchResult'
-import PendingBlogs from './pages/Blog/PendingBlogs'
+import {
+  RouteIndex,
+  RouteSignIn,
+  RouteSignUp,
+  RouteProfile,
+  RouteAddBlog,
+  RouteBlog,
+  RouteBlogEdit,
+  RouteAddCategory,
+  RouteCategoryDetails,
+  RouteCategoryEdit,
+  RouteSearchResult,
+  RouteSingleBlogDetails,
+  RouteBlogByCategory,
+  RoutePendingBlogs,
+  RouteComments,
+  RouteUser
+} from './helpers/RouteName'
 
 function App() {
   return (
@@ -81,20 +99,6 @@ function App() {
             </AuthRouteProtechtion>
           } />
 
-          <Route path={RouteUser} element={
-            <AuthRouteProtechtion>
-              <OnlyAdminAllowed>
-                <User />
-              </OnlyAdminAllowed>
-            </AuthRouteProtechtion>
-          } />
-
-          <Route path={RouteCommentDetails} element={
-            <AuthRouteProtechtion>
-              <Comments />
-            </AuthRouteProtechtion>
-          } />
-
           <Route path={RoutePendingBlogs} element={
             <AuthRouteProtechtion>
               <OnlyAdminAllowed>
@@ -103,6 +107,21 @@ function App() {
             </AuthRouteProtechtion>
           } />
 
+          <Route path={RouteComments} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <Comments />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
+
+          <Route path={RouteUser} element={
+            <AuthRouteProtechtion>
+              <OnlyAdminAllowed>
+                <User />
+              </OnlyAdminAllowed>
+            </AuthRouteProtechtion>
+          } />
         </Routes>
       </Layout>
     </BrowserRouter>

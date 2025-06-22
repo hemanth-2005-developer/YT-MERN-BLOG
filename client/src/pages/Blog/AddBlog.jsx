@@ -91,7 +91,7 @@ const AddBlog = () => {
             setFile()
             setPreview()
             navigate(RouteBlog)
-            showToast('success', 'Blog submitted successfully! It is now pending admin approval.')
+            showToast('success', data.message)
         } catch (error) {
             showToast('error', error.message)
         }
