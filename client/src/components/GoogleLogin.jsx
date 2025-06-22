@@ -5,7 +5,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '@/helpers/firebase';
 import { RouteIndex } from '@/helpers/RouteName';
 import { showToast } from '@/helpers/showToast';
-import { getEvn } from '@/helpers/getEnv';
+import { getEnv } from '@/helpers/getEnv';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/user/user.slice';
