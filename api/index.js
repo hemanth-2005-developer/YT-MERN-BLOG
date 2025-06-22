@@ -12,7 +12,7 @@ import BlogLikeRoute from './routes/Bloglike.route.js'
 
 dotenv.config()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 const app = express()
 
 app.use(cookieParser())
@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGODB_CONN, { dbName: 'yt-mern-blog' })
     .then(() => console.log('Database connected.'))
     .catch(err => console.log('Database connection failed.', err))
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log('Server running on port:', PORT)
 })
 

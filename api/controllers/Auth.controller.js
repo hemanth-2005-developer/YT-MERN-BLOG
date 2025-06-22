@@ -8,7 +8,7 @@ export const Register = async (req, res, next) => {
         const checkuser = await User.findOne({ email })
         if (checkuser) {
             // user already registered 
-            next(handleError(409, 'User already registered.'))
+            return next(handleError(409, 'User already registered.'))
         }
 
         const hashedPassword = bcryptjs.hashSync(password)
@@ -35,13 +35,13 @@ export const Login = async (req, res, next) => {
         const { email, password } = req.body
         const user = await User.findOne({ email })
         if (!user) {
-            next(handleError(404, 'Invalid login credentials.'))
+            return next(handleError(404, 'Invalid login credentials.'))
         }
         const hashedPassword = user.password
 
-        const comparePassword = bcryptjs.compare(password, hashedPassword)
+        const comparePassword = await bcryptjs.compare(password, hashedPassword)
         if (!comparePassword) {
-            next(handleError(404, 'Invalid login credentials.'))
+            return next(handleError(404, 'Invalid login credentials.'))
         }
 
         const token = jwt.sign({

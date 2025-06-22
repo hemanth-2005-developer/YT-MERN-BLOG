@@ -20,7 +20,10 @@ const SignUp = () => {
         name: z.string().min(3, 'Name must be at least 3 character long.'),
         email: z.string().email(),
         password: z.string().min(8, 'Password must be at least 8 character long'),
-        confirmPassword: z.string().refine(data => data.password === data.confirmPassword, 'Password and confirm password should be same.')
+        confirmPassword: z.string()
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: "Password and confirm password should be same.",
+        path: ["confirmPassword"],
     })
 
     const form = useForm({
