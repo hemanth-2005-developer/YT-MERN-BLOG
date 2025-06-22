@@ -1,0 +1,46 @@
+[16:33:16.278] Running build in Washington, D.C., USA (East) – iad1
+[16:33:16.279] Build machine configuration: 2 cores, 8 GB
+[16:33:16.296] Cloning github.com/hemanth-2005-developer/YT-MERN-BLOG (Branch: main, Commit: 537b919)
+[16:33:16.607] Cloning completed: 310.000ms
+[16:33:17.511] Restored build cache from previous deployment (464z95EfTgm2y1MsqcnTe5wkLMjz)
+[16:33:19.791] Running "vercel build"
+[16:33:20.594] Vercel CLI 43.3.0
+[16:33:21.439] Installing dependencies...
+[16:33:23.011] 
+[16:33:23.012] up to date in 1s
+[16:33:23.012] 
+[16:33:23.012] 139 packages are looking for funding
+[16:33:23.013]   run `npm fund` for details
+[16:33:23.046] Running "npm run build"
+[16:33:23.161] 
+[16:33:23.161] > client@0.0.0 build
+[16:33:23.161] > vite build
+[16:33:23.161] 
+[16:33:23.498] [36mvite v6.3.5 [32mbuilding for production...[36m[39m
+[16:33:23.910] transforming...
+[16:33:31.271] [32m✓[39m 2529 modules transformed.
+[16:33:31.274] [31m✗[39m Build failed in 7.54s
+[16:33:31.274] [31merror during build:
+[16:33:31.275] [31msrc/pages/Index.jsx (3:9): "getEvn" is not exported by "src/helpers/getEnv.js", imported by "src/pages/Index.jsx".[31m
+[16:33:31.275] file: [36m/vercel/path0/client/src/pages/Index.jsx:3:9[31m
+[16:33:31.275] [33m
+[16:33:31.275] 1: import BlogCard from '@/components/BlogCard'
+[16:33:31.275] 2: import Loading from '@/components/Loading'
+[16:33:31.276] 3: import { getEvn } from '@/helpers/getEnv'
+[16:33:31.276]             ^
+[16:33:31.276] 4: import { useFetch } from '@/hooks/useFetch'
+[16:33:31.276] 5: import React from 'react'
+[16:33:31.276] [31m
+[16:33:31.277]     at getRollupError (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:400:41)
+[16:33:31.277]     at error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/parseAst.js:396:42)
+[16:33:31.277]     at Module.error (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:16788:16)
+[16:33:31.277]     at Module.traceVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:17237:29)
+[16:33:31.277]     at ModuleScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:14893:39)
+[16:33:31.278]     at ReturnValueScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5617:38)
+[16:33:31.278]     at FunctionBodyScope.findVariable (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5617:38)
+[16:33:31.278]     at Identifier.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:5391:40)
+[16:33:31.278]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:2786:23)
+[16:33:31.279]     at CallExpression.bind (file:///vercel/path0/client/node_modules/rollup/dist/es/shared/node-entry.js:11978:15)[39m
+[16:33:31.347] Error: Command "npm run build" exited with 1
+[16:33:31.695] 
+[16:33:34.519] Exiting build container
