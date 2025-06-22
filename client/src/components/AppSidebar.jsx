@@ -17,10 +17,13 @@ import { GrBlog } from "react-icons/gr";
 import { FaRegComments } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 import { GoDot } from "react-icons/go";
-import { RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentDetails, RouteIndex, RouteUser } from "@/helpers/RouteName";
+import { RouteBlog, RouteBlogByCategory, RouteCategoryDetails, RouteCommentDetails, RouteIndex, RouteUser, RoutePendingBlogs } from "@/helpers/RouteName";
 import { useFetch } from "@/hooks/useFetch";
 import { getEvn } from "@/helpers/getEnv";
 import { useSelector } from "react-redux";
+import { MdOutlineMenuBook, MdOutlinePendingActions } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+import { FaComments } from "react-icons/fa";
 
 const AppSidebar = () => {
     const user = useSelector(state => state.user)
@@ -80,6 +83,18 @@ const AppSidebar = () => {
                                     <SidebarMenuButton>
                                         <LuUsers />
                                         <Link to={RouteUser}>Users</Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton>
+                                        <MdOutlineMenuBook />
+                                        <Link to={RouteBlog}>Blog Details</Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton>
+                                        <MdOutlinePendingActions />
+                                        <Link to={RoutePendingBlogs}>Pending Blogs</Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             </>

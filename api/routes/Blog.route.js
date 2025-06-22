@@ -1,5 +1,5 @@
 import express from 'express'
-import { addBlog, approveBlog, deleteBlog, editBlog, getAllBlogs, getBlog, getBlogByCategory, getRelatedBlog, search, showAllBlog, updateBlog } from '../controllers/Blog.controller.js'
+import { addBlog, approveBlog, deleteBlog, editBlog, getAllBlogs, getBlog, getBlogByCategory, getPendingBlogs, getRelatedBlog, search, showAllBlog, updateBlog } from '../controllers/Blog.controller.js'
 import { authenticate } from '../middleware/authenticate.js'
 import upload from '../config/multer.js'
 import { onlyadmin } from '../middleware/onlyadmin.js'
@@ -12,6 +12,7 @@ BlogRoute.put('/update/:blogid', authenticate, upload.single('file'), updateBlog
 BlogRoute.delete('/delete/:blogid', authenticate, deleteBlog)
 BlogRoute.put('/approve/:blogid', authenticate, onlyadmin, approveBlog)
 BlogRoute.get('/show-all', authenticate, showAllBlog)
+BlogRoute.get('/pending-blogs', authenticate, onlyadmin, getPendingBlogs)
 BlogRoute.get('/get-all', getAllBlogs)
 BlogRoute.get('/get/:slug', getBlog)
 BlogRoute.get('/get-related-blog/:category/:blog', getRelatedBlog)

@@ -228,3 +228,14 @@ export const getAllBlogs = async (req, res, next) => {
         next(handleError(500, error.message))
     }
 }
+
+export const getPendingBlogs = async (req, res, next) => {
+    try {
+        const blog = await Blog.find({ isApproved: false }).populate('author', 'name avatar role').populate('category', 'name slug').sort({ createdAt: -1 }).lean().exec()
+        res.status(200).json({
+            blog
+        })
+    } catch (error) {
+        next(handleError(500, error.message))
+    }
+}
