@@ -36,7 +36,10 @@ app.use('/api/blog-like', BlogLikeRoute)
 
 mongoose.connect(process.env.MONGODB_CONN, { dbName: 'yt-mern-blog' })
     .then(() => console.log('Database connected.'))
-    .catch(err => console.log('Database connection failed.', err))
+    .catch(err => {
+        console.log('Database connection failed.', err)
+        process.exit(1)
+    })
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log('Server running on port:', PORT)
