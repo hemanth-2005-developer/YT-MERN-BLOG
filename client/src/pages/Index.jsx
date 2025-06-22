@@ -1,6 +1,6 @@
 import BlogCard from '@/components/BlogCard'
 import Loading from '@/components/Loading'
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { useFetch } from '@/hooks/useFetch'
 import React from 'react'
 
