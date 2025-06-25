@@ -1,4 +1,4 @@
-import { getEvn } from '@/helpers/getEnv'
+import { getEnv } from '@/helpers/getEnv'
 import { RouteBlogDetails } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFetch'
 import React from 'react'
