@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { RouteBlogDetails } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFetch'
-import { getEnv } from '@/helpers/getEnv'
 import Loading from '@/components/Loading'
 
 const RelatedBlog = ({ props }) => {
