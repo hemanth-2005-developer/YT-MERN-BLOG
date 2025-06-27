@@ -34,10 +34,11 @@ app.use('/api/blog-like', BlogLikeRoute)
 
 
 
-mongoose.connect(process.env.MONGODB_CONN, { dbName: 'yt-mern-blog' })
+mongoose.connect(process.env.MONGODB_CONN || 'mongodb://localhost:27017/yt-mern-blog', { dbName: 'yt-mern-blog' })
     .then(() => console.log('Database connected.'))
     .catch(err => {
-        console.log('Database connection failed.', err)
+        console.log('Database connection failed.', err.message)
+        console.log('Please check your MongoDB connection string in the environment variables.')
         process.exit(1)
     })
 

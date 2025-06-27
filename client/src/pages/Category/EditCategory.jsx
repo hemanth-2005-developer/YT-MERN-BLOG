@@ -9,8 +9,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import slugify from 'slugify'
 import { showToast } from '@/helpers/showToast'
 import { getEnv } from '@/helpers/getEnv'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useFetch } from '@/hooks/useFetch'
+import Loading from '@/components/Loading'
 
 const EditCategory = () => {
     const { category_id } = useParams()
